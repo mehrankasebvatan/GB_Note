@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/toolbar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:id="@+id/rv_main"
+        android:layout_margin="5dp"
+        android:layout_height="match_parent"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="30dp"
+        android:src="@drawable/icon_add"
+        android:id="@+id/btn_new"
+        android:tint="@color/design_default_color_primary_variant"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/Desc_fab_main" />
+
+    <TextView
+        android:id="@+id/txt_nothing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/main_nothing"
+        android:gravity="center_vertical|center_horizontal"
+        android:visibility="invisible"/>
+
+
+
+</RelativeLayout>
