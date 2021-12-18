@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
         img4 = findViewById(R.id.img4);
         img4.setImageResource(R.drawable.icon_info);
 
+        img4.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, InfoActivity.class));
+            finish();
+
+        });
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);

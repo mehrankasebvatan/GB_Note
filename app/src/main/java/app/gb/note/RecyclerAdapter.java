@@ -106,6 +106,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.myView
     public void restartApp(){
         Intent res = new Intent(context, MainActivity.class);
         context.startActivity(res);
+        ((Activity)context).finish();
+
     }
 
 

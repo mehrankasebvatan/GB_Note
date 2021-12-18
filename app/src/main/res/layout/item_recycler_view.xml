@@ -13,16 +13,18 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/texts"
-            android:clickable="true"
-            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/images"
+            android:clickable="true"
+            android:focusable="true"
             android:orientation="vertical">
 
 
             <TextView
+
+                style="@style/TextAppearance.AppCompat.Title"
                 android:id="@+id/txt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,32 +43,27 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/images"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_weight="1"
                 android:id="@+id/img_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:src="@drawable/icon_edit" />
 
 
             <ImageView
-                android:layout_weight="1"
                 android:id="@+id/img_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:src="@drawable/icon_delete" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

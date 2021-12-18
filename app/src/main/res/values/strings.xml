@@ -9,6 +9,26 @@
     <string name="empty_text">متن یادداشت خالی ست...</string>
     <string name="Desc_fab_main">GB Note</string>
     <string name="main_nothing">چیزی برای نمایش نیست.\nلطفا ابتدا یک یادداشت اضافه کنید...</string>
+    <string name="version">نسخه: 1.0.0</string>
+    <string name="developer">توسعه دهنده: مهران کاسب وطن</string>
+    <string name="rate">امتیاز به برنامه</string>
+    <string name="apps">سایر برنامه ها</string>
+    <string name="info">
+
+        جیبی نوت رایگان هست و رایگان خواهد ماند. \nدر صورتی که از این برنامه استفاده میکنید و رضایت دارید، می توانید از توسعه دهنده حمایت مالی انجام دهید. با کلیک روی دکمه پایین به درگاه پرداخت امن هدایت می شوید. ممنون :)
+
+    </string>
+    <string name="donate">حمایت مالی</string>
+    <string name="license">
+        ابن برنامه تحت لایسنس GNU GENERAL PUBLIC LICENSE Version 3 منتشر شده است. \nاستفاده شخصی جهت آموزش آزاد است ولی هر گونه بهره برداری مادی و همچنین انتشار آن در سایر مارکت های ایرانی و غیر ایرانی بدون اجاره توسعه دهنده مجاز نیست.\nزمستان 1400
+    </string>
+
+    <string name="instagram">اینستاگرام</string>
+    <string name="telegram">تلگرام</string>
+    <string name="site">سایت</string>
+    <string name="github">گیتهاب</string>
+    <string name="add_note">افزودن یادداشت جدید</string>
+    <string name="about">درباره برنامه</string>
 
 
 </resources>
