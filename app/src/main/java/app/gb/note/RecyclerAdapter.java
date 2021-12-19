@@ -1,9 +1,9 @@
 package app.gb.note;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import app.gb.note.activities.EditActivity;
 import app.gb.note.activities.MainActivity;
 import app.gb.note.activities.NoteActivity;
 import app.gb.note.database.DataBaseHelper;
@@ -50,33 +51,39 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.myView
         holder.content.setOnClickListener(view -> {
 
             Intent in = new Intent(context, NoteActivity.class);
-            in.putExtra("idKey",dataNote.id);
-            in.putExtra("titleKey",dataNote.title);
-            in.putExtra("textKey",dataNote.text);
+            in.putExtra("idKey", dataNote.id);
+            in.putExtra("titleKey", dataNote.title);
+            in.putExtra("textKey", dataNote.text);
             context.startActivity(in);
-            ((Activity)context).finish();
+            ((Activity) context).finish();
         });
-
 
         holder.delete.setOnClickListener(view -> {
 
             myDb = new DataBaseHelper(context);
 
-            AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(view.getContext(), R.style.dialog).create();
             alertDialog.setTitle(dataNote.title);
             alertDialog.getWindow().getDecorView().setLayoutDirection(view.LAYOUT_DIRECTION_RTL);
             alertDialog.setMessage(context.getResources().getString(R.string.delete_message));
-            alertDialog.setButton(context.getResources().getString(R.string.delete), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    String id = dataNote.id;
-                    myDb.deleteSingleNote(id);
-                    restartApp();
-                }
+            alertDialog.setButton(context.getResources().getString(R.string.delete), (dialogInterface, i) -> {
+                String id = dataNote.id;
+                myDb.deleteSingleNote(id);
+                restartApp();
             });
             alertDialog.show();
 
 
+
+        });
+
+        holder.edit.setOnClickListener(view -> {
+            Intent in = new Intent(context, EditActivity.class);
+            in.putExtra("idKey", dataNote.id);
+            in.putExtra("titleKey", dataNote.title);
+            in.putExtra("textKey", dataNote.text);
+            context.startActivity(in);
+            ((Activity) context).finish();
         });
 
     }
@@ -89,7 +96,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.myView
     public class myViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, text;
-        ImageView delete;
+        ImageView delete, edit;
         LinearLayoutCompat content;
 
         public myViewHolder(@NonNull View itemView) {
@@ -97,16 +104,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.myView
             title = itemView.findViewById(R.id.txt_title);
             text = itemView.findViewById(R.id.txt_text);
             delete = itemView.findViewById(R.id.img_delete);
+            edit = itemView.findViewById(R.id.img_edit);
             content = itemView.findViewById(R.id.texts);
 
 
         }
     }
 
-    public void restartApp(){
+    public void restartApp() {
         Intent res = new Intent(context, MainActivity.class);
         context.startActivity(res);
-        ((Activity)context).finish();
+        ((Activity) context).finish();
 
     }
 

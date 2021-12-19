@@ -26,7 +26,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 public class MainActivity extends AppCompatActivity {
 
     TextView nothing, toolbar;
-    ImageView img1, img2, img3, img4;
+    ImageView img4;
     RecyclerView recyclerView;
     RecyclerAdapter adapter;
     DataBaseHelper myDb;

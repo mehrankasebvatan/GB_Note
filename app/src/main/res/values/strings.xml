@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">جیبی نوت</string>
 
-    <string name="delete_message">برای همیشه پاک می شود. آیا اطمینان دارید؟</string>
+    <string name="delete_message">برای همیشه پاک می شود.\nآیا اطمینان دارید؟</string>
     <string name="delete">حذف</string>
     <string name="title">عنوان:</string>
     <string name="text">متن یادداشت:</string>
@@ -28,6 +28,7 @@
     <string name="site">سایت</string>
     <string name="github">گیتهاب</string>
     <string name="add_note">افزودن یادداشت جدید</string>
+    <string name="edit_note">ویرایش یادداشت</string>
     <string name="about">درباره برنامه</string>
 
 

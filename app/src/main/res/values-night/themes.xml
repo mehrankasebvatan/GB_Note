@@ -16,6 +16,7 @@
         <item name="android:textColorPrimary">@color/white</item>
 
     </style>
+
     <style name="customCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/cv_night</item>
         <item name="cardCornerRadius">15dp</item>
@@ -30,6 +31,16 @@
 
     </style>
 
+    <style name="dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+
+        <item name="colorOnPrimary">@color/red_700</item>
+        <item name="android:windowBackground">@color/cv_night</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+
+
+    </style>
 
 
 </resources>

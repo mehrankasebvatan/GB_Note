@@ -4,48 +4,48 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import app.gb.note.R;
+import app.gb.note.database.DataBaseHelper;
+import app.gb.note.database.DataNote;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
-public class NoteActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity {
 
 
-    TextView title, text, toolbar;
+    TextView toolbar, id;
     ImageView img1, img2, img3, img4;
+    EditText title, text;
+    DataBaseHelper myDb;
+    FloatingActionButton done;
+    List<DataNote> dataNotes = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_note);
+        setContentView(R.layout.activity_edit);
 
-        title = findViewById(R.id.tv_title);
-        text = findViewById(R.id.tv_text);
+        title = findViewById(R.id.et_title);
+        text = findViewById(R.id.et_text);
+        done = findViewById(R.id.btn_done);
         toolbar = findViewById(R.id.txt_toolbar);
-        toolbar.setText(R.string.app_name);
+        toolbar.setText(R.string.edit_note);
         img1 = findViewById(R.id.img1);
         img1.setImageResource(R.drawable.icon_back);
         img1.setOnClickListener(view -> {
-            startActivity(new Intent(NoteActivity.this, MainActivity.class));
+            startActivity(new Intent(EditActivity.this, MainActivity.class));
             finish();
-        });
-
-        img4 = findViewById(R.id.img4);
-        img4.setImageResource(R.drawable.icon_share);
-        img4.setOnClickListener(view -> {
-
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            String share = text.getText().toString();
-            intent.putExtra(Intent.EXTRA_TEXT, share);
-            Intent modIntent = Intent.createChooser(intent, "share with... ");
-            startActivity(modIntent);
-
         });
 
 
@@ -58,6 +58,12 @@ public class NoteActivity extends AppCompatActivity {
 
         }
 
+        done.setOnClickListener(view -> {
+
+
+        });
+
+
     }
 
     @Override
@@ -68,7 +74,7 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(NoteActivity.this, MainActivity.class));
+        startActivity(new Intent(EditActivity.this, MainActivity.class));
         finish();
 
     }
