@@ -23,12 +23,10 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 public class EditActivity extends AppCompatActivity {
 
 
-    TextView toolbar, id;
-    ImageView img1, img2, img3, img4;
+    TextView toolbar;
+    ImageView img1;
     EditText title, text;
-    DataBaseHelper myDb;
     FloatingActionButton done;
-    List<DataNote> dataNotes = new ArrayList<>();
 
 
     @Override
