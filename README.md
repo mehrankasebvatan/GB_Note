@@ -13,3 +13,10 @@ Simple note app with day/night theme, recycler view, custom toolbar and ...
 ## Screen Shots / تصاویر محیط برنامه
 
 
+
+## Download Apk / دانلود فایل نصبی
+
+[Click Here](https://https://github.com/mehrankasebvatan/GB_Note/raw/master/app/release/GB_Note.apk)
+
+
+
