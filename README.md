@@ -12,7 +12,7 @@ Simple note app with day/night theme, recycler view, custom toolbar and ...
 
 ## Screen Shots / تصاویر محیط برنامه
 Dark Main | Dark Add Note | Light Main | Light Add Note
-:------------------:|:-------------------
+:------------------:|:-------------------:------------------:|:-------------------
 ![main](https://github.com/mehrankasebvatan/GB_Note/blob/master/app/ScreenShots/GB04.png) | ![main](https://github.com/mehrankasebvatan/GB_Note/blob/master/app/ScreenShots/GB03.png) | ![main](https://github.com/mehrankasebvatan/GB_Note/blob/master/app/ScreenShots/GB02.png) | ![main](https://github.com/mehrankasebvatan/GB_Note/blob/master/app/ScreenShots/GB01.png)
 
 ## Download Apk / دانلود فایل نصبی
