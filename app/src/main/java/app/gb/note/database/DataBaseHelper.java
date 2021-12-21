@@ -65,6 +65,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean updateNote(String noteId, DataNote note){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Col2, note.title);
+        contentValues.put(Col3, note.text);
+        int res = db.update(TABLE_NAME, contentValues, "_id= ?", new String[]{noteId});
+        return res>0;
+    }
 
 
 

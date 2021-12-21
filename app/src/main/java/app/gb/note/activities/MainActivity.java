@@ -22,6 +22,8 @@ import app.gb.note.RecyclerAdapter;
 import app.gb.note.database.DataBaseHelper;
 import app.gb.note.database.DataNote;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
+import com.pushpole.sdk.PushPole;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PushPole.initialize(this,false);
 
         myDb = new DataBaseHelper(this);
         recyclerView = findViewById(R.id.rv_main);
@@ -102,5 +106,4 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
-
 }

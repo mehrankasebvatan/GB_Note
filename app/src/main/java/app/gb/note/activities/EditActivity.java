@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 import app.gb.note.R;
 import app.gb.note.database.DataBaseHelper;
@@ -27,12 +25,16 @@ public class EditActivity extends AppCompatActivity {
     ImageView img1;
     EditText title, text;
     FloatingActionButton done;
+    DataBaseHelper myDb;
+    String id = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+        myDb = new DataBaseHelper(this);
 
         title = findViewById(R.id.et_title);
         text = findViewById(R.id.et_text);
@@ -49,7 +51,7 @@ public class EditActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String id = getIntent().getStringExtra("idKey");
+            id = getIntent().getStringExtra("idKey");
             title.setText(getIntent().getStringExtra("titleKey"));
             text.setText(getIntent().getStringExtra("textKey"));
             text.setMovementMethod(new ScrollingMovementMethod());
@@ -57,6 +59,27 @@ public class EditActivity extends AppCompatActivity {
         }
 
         done.setOnClickListener(view -> {
+
+            if (id == null) {
+
+                MDToast mdToast = MDToast.makeText(EditActivity.this, getApplicationContext().getResources().getString(R.string.edit_id_null), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
+                mdToast.show();
+            }
+            DataNote upValue = new DataNote();
+            upValue.title = title.getText().toString().trim();
+            upValue.text = text.getText().toString().trim();
+            boolean resultUpdate = myDb.updateNote(id, upValue);
+
+            if (resultUpdate = true) {
+                MDToast mdToast = MDToast.makeText(EditActivity.this, getApplicationContext().getResources().getString(R.string.edit_ok), MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
+                mdToast.show();
+            } else {
+                MDToast mdToast = MDToast.makeText(EditActivity.this, getApplicationContext().getResources().getString(R.string.edit_fail), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
+                mdToast.show();
+            }
+
+
+            onBackPressed();
 
 
         });
@@ -74,8 +97,6 @@ public class EditActivity extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(EditActivity.this, MainActivity.class));
         finish();
-
     }
-
 
 }

@@ -30,6 +30,10 @@
     <string name="add_note">افزودن یادداشت جدید</string>
     <string name="edit_note">ویرایش یادداشت</string>
     <string name="about">درباره برنامه</string>
+    <string name="edit_fail">ویرایش موفق نبود.\nبه توسعه دهنده گزارش دهید.</string>
+    <string name="edit_ok">ویرایش با موفقیت انجام شد.</string>
+    <string name="edit_id_null">ارور null اتفاق افتاد\nبه توسعه دهنده گزارش دهید.</string>
+    <string name="no_title">بدون عنوان</string>
 
 
 </resources>

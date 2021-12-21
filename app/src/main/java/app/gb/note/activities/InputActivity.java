@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 import app.gb.note.R;
 import app.gb.note.database.DataBaseHelper;
@@ -43,8 +45,8 @@ public class InputActivity extends AppCompatActivity {
         img1 = findViewById(R.id.img1);
         img1.setImageResource(R.drawable.icon_back);
         img1.setOnClickListener(view -> {
-           startActivity(new Intent(InputActivity.this, MainActivity.class));
-           finish();
+            startActivity(new Intent(InputActivity.this, MainActivity.class));
+            finish();
 
         });
 
@@ -70,16 +72,15 @@ public class InputActivity extends AppCompatActivity {
         text = et_text.getText().toString();
 
         if (title.length() == 0) {
-            SharedPreferences.Editor editor = pref.edit();
-
-            int idName = pref.getInt("name", 0);
-            idName++;
-            title = getApplicationContext().getResources().getString(R.string.new_note) + " " + idName + " : ";
-            editor.apply();
+           title = getApplicationContext().getResources().getString(R.string.no_title);
         }
 
         if (text.length() == 0) {
-            Toast.makeText(InputActivity.this, getApplicationContext().getResources().getString(R.string.empty_text), Toast.LENGTH_SHORT).show();
+
+            MDToast mdToast = MDToast.makeText(InputActivity.this, getApplicationContext().getResources().getString(R.string.empty_text), MDToast.LENGTH_SHORT , MDToast.TYPE_ERROR);
+            mdToast.show();
+
+
 
         } else {
             myDb.insertNotes(title, text);
