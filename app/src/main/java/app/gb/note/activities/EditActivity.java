@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.adivery.sdk.Adivery;
+import com.adivery.sdk.AdiveryAdListener;
+import com.adivery.sdk.AdiveryBannerAdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.valdesekamdem.library.mdtoast.MDToast;
 
@@ -27,6 +30,8 @@ public class EditActivity extends AppCompatActivity {
     FloatingActionButton done;
     DataBaseHelper myDb;
     String id = null;
+    String APP_ID = "f9627c46-dc2c-4e52-963a-943a624b40a4";
+
 
 
     @Override
@@ -35,6 +40,8 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         myDb = new DataBaseHelper(this);
+        Adivery.configure(getApplication(), APP_ID);
+        showAdd();
 
         title = findViewById(R.id.et_title);
         text = findViewById(R.id.et_text);
@@ -54,7 +61,6 @@ public class EditActivity extends AppCompatActivity {
             id = getIntent().getStringExtra("idKey");
             title.setText(getIntent().getStringExtra("titleKey"));
             text.setText(getIntent().getStringExtra("textKey"));
-            text.setMovementMethod(new ScrollingMovementMethod());
 
         }
 
@@ -97,6 +103,31 @@ public class EditActivity extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(EditActivity.this, MainActivity.class));
         finish();
+    }
+
+    public void showAdd() {
+
+        AdiveryBannerAdView bannerAd = findViewById(R.id.banner_ad);
+
+        bannerAd.setBannerAdListener(new AdiveryAdListener() {
+            @Override
+            public void onAdLoaded() {
+                // تبلیغ به‌طور خودکار نمایش داده می‌شود، هر کار دیگری لازم است اینجا انجام دهید.
+            }
+
+            @Override
+            public void onError(String reason) {
+                // خطا را چاپ کنید تا از دلیل آن مطلع شوید
+            }
+
+            @Override
+            public void onAdClicked() {
+                // کاربر روی بنر کلیک کرده
+            }
+        });
+
+        bannerAd.loadAd();
+
     }
 
 }

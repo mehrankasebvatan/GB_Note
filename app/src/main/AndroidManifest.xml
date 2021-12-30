@@ -17,9 +17,6 @@
             android:name=".activities.InfoActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.NoteActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.InputActivity"
             android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize" />

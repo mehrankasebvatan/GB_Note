@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include layout="@layout/toolbar"
         android:layout_width="match_parent"
@@ -16,17 +17,18 @@
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:id="@+id/rv_main"
+        android:layout_above="@id/banner_ad"
         android:layout_margin="5dp"
         android:layout_height="match_parent"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="30dp"
         android:src="@drawable/icon_add"
         android:id="@+id/btn_new"
+        android:layout_above="@id/banner_ad"
         android:tint="@color/design_default_color_primary_variant"
         android:layout_height="wrap_content"
         android:contentDescription="@string/Desc_fab_main" />
@@ -38,6 +40,16 @@
         android:text="@string/main_nothing"
         android:gravity="center_vertical|center_horizontal"
         android:visibility="invisible"/>
+
+
+
+    <com.adivery.sdk.AdiveryBannerAdView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/banner_ad"
+        android:layout_alignParentBottom="true"
+        app:placement_id="9d1d1192-c73e-44b2-a0f2-9ece34e275e4"
+        app:banner_size="smart_banner"/>
 
 
 

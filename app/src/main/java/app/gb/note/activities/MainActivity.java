@@ -12,7 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.adivery.sdk.Adivery;
+import com.adivery.sdk.AdiveryAdListener;
+import com.adivery.sdk.AdiveryBannerAdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.pushpole.sdk.PushPole;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,6 @@ import app.gb.note.RecyclerAdapter;
 import app.gb.note.database.DataBaseHelper;
 import app.gb.note.database.DataNote;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
-import com.pushpole.sdk.PushPole;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerAdapter adapter;
     DataBaseHelper myDb;
     FloatingActionButton btn_new;
+    String APP_ID = "f9627c46-dc2c-4e52-963a-943a624b40a4";
 
     List<DataNote> dataNotes = new ArrayList<>();
 
@@ -42,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PushPole.initialize(this,false);
+        PushPole.initialize(this, false);
+        Adivery.configure(getApplication(), APP_ID);
+        showAdd();
+
 
         myDb = new DataBaseHelper(this);
         recyclerView = findViewById(R.id.rv_main);
@@ -102,8 +109,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        finish();
+    public void showAdd() {
+
+        AdiveryBannerAdView bannerAd = findViewById(R.id.banner_ad);
+
+        bannerAd.setBannerAdListener(new AdiveryAdListener() {
+            @Override
+            public void onAdLoaded() {
+                // تبلیغ به‌طور خودکار نمایش داده می‌شود، هر کار دیگری لازم است اینجا انجام دهید.
+            }
+
+            @Override
+            public void onError(String reason) {
+                // خطا را چاپ کنید تا از دلیل آن مطلع شوید
+            }
+
+            @Override
+            public void onAdClicked() {
+                // کاربر روی بنر کلیک کرده
+            }
+        });
+
+        bannerAd.loadAd();
+
     }
+
+
 }
